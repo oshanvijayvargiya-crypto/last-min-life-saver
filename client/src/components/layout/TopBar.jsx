@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, Flame, Zap, Calendar as CalIcon, Check, X, ShieldAlert } from 'lucide-react';
+import { Bell, Flame, Zap, Calendar as CalIcon, Check, X, ShieldAlert, LogOut, Settings as SettingsIcon } from 'lucide-react';
 import { useStore } from '../../store/useStore.js';
 import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 
 export const TopBar = () => {
-  const { user, notifications, dismissNotification, completeTask } = useStore();
+  const { user, notifications, dismissNotification, completeTask, logout } = useStore();
   const [showNotif, setShowNotif] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [greeting, setGreeting] = useState('Welcome');
   const navigate = useNavigate();
 
@@ -62,7 +63,7 @@ export const TopBar = () => {
         {/* Notification Bell Dropdown */}
         <div className="relative">
           <button
-            onClick={() => setShowNotif(!showNotif)}
+            onClick={() => { setShowNotif(!showNotif); setShowProfile(false); }}
             className="p-2 text-textMuted hover:text-white rounded-xl hover:bg-white/5 transition-all relative"
           >
             <Bell size={18} />
@@ -136,6 +137,48 @@ export const TopBar = () => {
                   ))
                 )}
               </div>
+            </div>
+          )}
+        </div>
+
+        {/* User Profile Dropdown Menu */}
+        <div className="relative flex items-center">
+          <button
+            onClick={() => { setShowProfile(!showProfile); setShowNotif(false); }}
+            className="flex items-center gap-1 focus:outline-none"
+            title="User Settings & Logout"
+          >
+            <img
+              src={user?.avatar_url || 'https://api.dicebear.com/7.x/bottts/svg?seed=Rahul'}
+              alt={user?.name || 'User Profile'}
+              className="h-8 w-8 rounded-xl border border-white/10 bg-darkBg object-cover cursor-pointer hover:border-accentPurple/50 transition-all"
+            />
+          </button>
+
+          {showProfile && (
+            <div className="absolute right-0 top-11 w-48 bg-darkSurface border border-white/10 rounded-2xl p-2 shadow-2xl z-30 animate-in fade-in slide-in-from-top-2 duration-100">
+              <div className="px-3 py-2 border-b border-white/5 mb-1.5 overflow-hidden select-none">
+                <p className="text-xs font-semibold text-textPrimary truncate">{user?.name || 'Rahul Kumar'}</p>
+                <p className="text-[10px] text-textMuted truncate">{user?.email || 'rahul.mock@gmail.com'}</p>
+              </div>
+              <button
+                onClick={() => { navigate('/settings'); setShowProfile(false); }}
+                className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-xs font-semibold text-textMuted hover:text-white hover:bg-white/5 transition-all text-left"
+              >
+                <SettingsIcon size={14} />
+                Settings
+              </button>
+              <button
+                onClick={async () => {
+                  await logout();
+                  navigate('/');
+                  setShowProfile(false);
+                }}
+                className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-xs font-semibold text-danger hover:bg-danger/10 transition-all text-left"
+              >
+                <LogOut size={14} />
+                Sign Out
+              </button>
             </div>
           )}
         </div>
