@@ -5,11 +5,13 @@ import { Button } from '../components/ui/Button.jsx';
 
 export const Landing = () => {
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:3000/auth/google';
+    const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    window.location.href = `${apiBase}/auth/google`;
   };
 
   const handleMockLogin = () => {
-    window.location.href = 'http://localhost:3000/auth/mock-login';
+    const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    window.location.href = `${apiBase}/auth/mock-login`;
   };
 
   const features = [

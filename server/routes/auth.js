@@ -10,7 +10,7 @@ dotenv.config();
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-life-saver';
-const CLIENT_URL = 'http://localhost:5173'; // Default Vite client dev server
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173'; // Default Vite client dev server
 
 let isGoogleConfigured = false;
 if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
