@@ -294,13 +294,51 @@ Provide ONLY valid JSON.
     return extractJson(aiRes);
   } catch (error) {
     console.warn("Using fallback local coaching response:", error.message);
-    return {
-      message: `I hear you! Procrastination is just a chemical delay in starting. Let's tackle this together by breaking the inertia. Focus on the single smallest action step you can complete. You have a current streak of ${streakData?.streak_count || 0} days, let's keep that momentum going!`,
-      action_steps: [
+
+    const msgLower = userMessage.toLowerCase();
+    let responseMessage = "";
+    let actionSteps = [];
+
+    if (msgLower.includes("hello") || msgLower.includes("hi") || msgLower.includes("hey")) {
+      responseMessage = `Hello! 👋 I'm your AI Productivity Coach. I'm here to help you defeat procrastination and crush your goals. What are we working on today? Let's take it one step at a time! \n\n*(Note: Your Gemini API Key has exceeded its free quota. I'm running on a smart local helper bot until you update your key!)*`;
+      actionSteps = [
+        "List your top 3 priority tasks for today.",
+        "Clear your workspace and shut down distracting tabs.",
+        "Type 'lazy' or 'stuck' if you need help starting a task!"
+      ];
+    } else if (msgLower.includes("lazy") || msgLower.includes("procrastinate") || msgLower.includes("stuck") || msgLower.includes("bored")) {
+      responseMessage = `I hear you completely. Feeling lazy or stuck is usually just your brain resisting the friction of starting. Let's cheat that resistance: pick your absolute smallest task and agree to do it for just **2 minutes**. Once you break the inertia, the rest is easy!`;
+      actionSteps = [
+        "Select one task and work on it for exactly 2 minutes.",
+        "Put your phone in another room or turn on Do Not Disturb.",
+        "Take a sip of water and start the first step right now."
+      ];
+    } else if (msgLower.includes("overwhelm") || msgLower.includes("stressed") || msgLower.includes("too much") || msgLower.includes("anxious")) {
+      responseMessage = `Take a deep breath. 🧘‍♂️ Overwhelm happens when we try to solve the whole project at once. Let's put everything else aside. What is the **one single step** we can do right now to move forward? Focus on that, and forget about the rest for the next 20 minutes.`;
+      actionSteps = [
+        "Pick the easiest sub-task to gain quick momentum.",
+        "Write down a tiny 3-item checklist for the next hour.",
+        "Inhale deeply for 4 seconds, hold for 4, exhale for 4."
+      ];
+    } else if (msgLower.includes("task") || msgLower.includes("work") || msgLower.includes("finish")) {
+      responseMessage = `Let's get this done! 🚀 You have a current streak of **${streakData?.streak_count || 0} days**. Let's protect that streak at all costs. The best way to finish is to start with a Pomodoro sprint—25 minutes of deep focus, followed by a reward break.`;
+      actionSteps = [
+        "Start a Pomodoro timer (25 mins focus).",
+        "Open only the tab/document required for this specific task.",
+        "Commit to working without switching tabs until the timer rings."
+      ];
+    } else {
+      responseMessage = `I understand. Let's tackle this together. Focus on the single smallest action step you can complete. You have a current streak of **${streakData?.streak_count || 0} days** with **${streakData?.xp_points || 0} XP**—let's keep that momentum going! \n\n*(Tip: If you want real Gemini AI responses, you can easily generate a new free API Key from Google AI Studio and update it in your Render settings!)*`;
+      actionSteps = [
         "Pick your top task and set a timer for just 5 minutes of focused work.",
-        "Clear your workspace of all distractions (put your phone in another room).",
+        "Clear your workspace of all distractions (put your phone away).",
         "Write down the immediate first step (e.g. open a document) and execute it now."
-      ]
+      ];
+    }
+
+    return {
+      message: responseMessage,
+      action_steps: actionSteps
     };
   }
 }
