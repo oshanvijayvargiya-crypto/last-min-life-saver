@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-darkBg text-textPrimary font-sans antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Glassmorphism Panels */
+.glass-panel {
+  background: rgba(26, 26, 46, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(26, 26, 46, 0.8);
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(124, 58, 237, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-input {
+  background: rgba(15, 15, 19, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.25);
+  outline: none;
+}
+
+/* Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-accentPurple to-accentBlue bg-clip-text text-transparent;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f13;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}
+
+/* Pomodoro pulse animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.8);
+  }
+}
+
+.pomodoro-active {
+  animation: pulse-glow 2s infinite;
+}
