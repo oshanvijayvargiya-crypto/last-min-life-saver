@@ -166,7 +166,7 @@ export const Calendar = () => {
         onClick={() => handleDayClick(day)}
         className={clsx(
           "min-h-24 bg-darkSurface border border-white/5 p-2 rounded-xl hover:border-accentPurple/30 transition-all cursor-pointer relative flex flex-col justify-between",
-          isToday && "border-accentPurple/50 bg-accentPurple/5 shadow-[0_0_15px_rgba(124,58,237,0.15)]"
+          isToday && "border-accentPurple/50 bg-accentPurple/5 shadow-[0_0_15px_rgba(255, 107, 0, 0.15)]"
         )}
       >
         <span className={clsx(

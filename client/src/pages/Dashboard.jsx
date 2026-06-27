@@ -182,9 +182,9 @@ export const Dashboard = () => {
                         {/* Timeline Marker dot */}
                         <span className={clsx(
                           "absolute left-[-21px] top-1.5 h-2 w-2 rounded-full",
-                          item.type === 'focus' ? 'bg-accentPurple shadow-[0_0_8px_rgba(124,58,237,0.5)]' :
+                          item.type === 'focus' ? 'bg-accentPurple shadow-[0_0_8px_rgba(255,107,0,0.5)]' :
                           item.type === 'break' ? 'bg-success shadow-[0_0_8px_rgba(16,185,129,0.5)]' :
-                          'bg-accentBlue shadow-[0_0_8px_rgba(59,130,246,0.5)]'
+                          'bg-accentBlue shadow-[0_0_8px_rgba(255,170,0,0.5)]'
                         )} />
                         
                         <div className="flex items-center justify-between gap-4">

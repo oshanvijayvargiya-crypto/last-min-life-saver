@@ -90,9 +90,9 @@ export const Goals = () => {
 
       // Solid color stops mapped to glassmorphism styles
       let colorClass = "bg-white/5 border-white/5";
-      if (count === 1) colorClass = "bg-[#7C3AED]/20 border-accentPurple/10";
-      else if (count === 2) colorClass = "bg-[#7C3AED]/50 border-accentPurple/30";
-      else if (count >= 3) colorClass = "bg-[#7C3AED] border-accentPurple shadow-[0_0_8px_rgba(124,58,237,0.4)]";
+      if (count === 1) colorClass = "bg-[#ff6b00]/20 border-accentPurple/10";
+      else if (count === 2) colorClass = "bg-[#ff6b00]/50 border-accentPurple/30";
+      else if (count >= 3) colorClass = "bg-[#ff6b00] border-accentPurple shadow-[0_0_8px_rgba(255, 107, 0, 0.4)]";
 
       cells.push(
         <div
@@ -111,9 +111,9 @@ export const Goals = () => {
         <div className="flex items-center gap-2 text-[10px] text-textMuted font-semibold uppercase justify-end pr-6 mt-2">
           <span>Less</span>
           <div className="w-2.5 h-2.5 rounded border border-white/5 bg-white/5" />
-          <div className="w-2.5 h-2.5 rounded border border-accentPurple/10 bg-[#7C3AED]/20" />
-          <div className="w-2.5 h-2.5 rounded border border-accentPurple/30 bg-[#7C3AED]/50" />
-          <div className="w-2.5 h-2.5 rounded border border-accentPurple bg-[#7C3AED]" />
+          <div className="w-2.5 h-2.5 rounded border border-accentPurple/10 bg-[#ff6b00]/20" />
+          <div className="w-2.5 h-2.5 rounded border border-accentPurple/30 bg-[#ff6b00]/50" />
+          <div className="w-2.5 h-2.5 rounded border border-accentPurple bg-[#ff6b00]" />
           <span>More</span>
         </div>
       </div>

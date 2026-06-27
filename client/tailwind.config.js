@@ -7,14 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        darkBg: "#0f0f13",
-        darkSurface: "#1a1a2e",
-        accentPurple: "#7c3aed",
-        accentBlue: "#3b82f6",
+        darkBg: "#080706",
+        darkSurface: "rgba(20, 16, 14, 0.5)",
+        accentPurple: "#ff6b00",
+        accentBlue: "#ffaa00",
         success: "#10b981",
-        warning: "#f59e0b",
+        warning: "#ff7a00",
         danger: "#ef4444",
-        textPrimary: "#f1f5f9",
+        textPrimary: "#f8fafc",
         textMuted: "#94a3b8",
       },
       fontFamily: {

@@ -22,7 +22,7 @@ export const Button = ({
   };
 
   const variantStyles = {
-    primary: "bg-gradient-to-r from-accentPurple to-accentBlue text-white hover:shadow-[0_0_20px_rgba(124,58,237,0.4)]",
+    primary: "bg-gradient-to-r from-accentPurple to-accentBlue text-white hover:shadow-[0_0_20px_rgba(255, 107, 0, 0.4)]",
     secondary: "glass-input text-textPrimary hover:bg-white/10 hover:border-white/20",
     success: "bg-success text-white hover:bg-emerald-600 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]",
     danger: "bg-danger text-white hover:bg-rose-600 hover:shadow-[0_0_15px_rgba(239,68,68,0.3)]",
