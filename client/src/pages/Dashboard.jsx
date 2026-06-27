@@ -392,7 +392,7 @@ export const Dashboard = () => {
       {/* Floating Action Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 h-14 w-14 rounded-full bg-gradient-to-tr from-accentPurple to-accentBlue text-white shadow-lg shadow-accentPurple/25 hover:shadow-accentPurple/40 active:scale-95 flex items-center justify-center transition-all z-20"
+        className="fixed bottom-20 right-6 md:bottom-8 md:right-8 h-14 w-14 rounded-full bg-gradient-to-tr from-accentPurple to-accentBlue text-white shadow-lg shadow-accentPurple/25 hover:shadow-accentPurple/40 active:scale-95 flex items-center justify-center transition-all z-20"
       >
         <Plus size={28} />
       </button>

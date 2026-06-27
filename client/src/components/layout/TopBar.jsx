@@ -33,10 +33,10 @@ export const TopBar = () => {
   };
 
   return (
-    <header className="h-16 border-b border-white/5 bg-darkBg/60 backdrop-blur-md flex items-center justify-between px-6 fixed top-0 left-0 right-0 z-10 md:left-64">
+    <header className="h-16 border-b border-white/5 bg-darkBg/60 backdrop-blur-md flex items-center justify-between px-4 md:px-6 fixed top-0 left-0 right-0 z-10 md:left-64">
       {/* Greeting & Date */}
-      <div>
-        <h2 className="text-sm font-bold text-white md:text-base flex items-center gap-1.5">
+      <div className="min-w-0">
+        <h2 className="text-sm font-bold text-white md:text-base flex items-center gap-1 truncate max-w-[120px] xs:max-w-none">
           {greeting}, <span className="gradient-text">{user?.name?.split(' ')[0] || 'Rahul'}</span>!
         </h2>
         <p className="text-[10px] text-textMuted font-medium flex items-center gap-1 mt-0.5">
@@ -46,17 +46,17 @@ export const TopBar = () => {
       </div>
 
       {/* Badges & Actions */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
         {/* Streak Counter Badge */}
-        <div className="flex items-center gap-1 bg-orange-500/10 border border-orange-500/20 px-2.5 py-1 rounded-full text-xs text-orange-400 font-semibold select-none">
+        <div className="flex items-center gap-0.5 sm:gap-1 bg-orange-500/10 border border-orange-500/20 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-xs text-orange-400 font-semibold select-none">
           <Flame size={12} className="animate-pulse" />
-          <span>{user?.streak_count || 0}d Streak</span>
+          <span>{user?.streak_count || 0}d<span className="hidden sm:inline"> Streak</span></span>
         </div>
 
         {/* XP Points Badge */}
-        <div className="flex items-center gap-1 bg-accentBlue/10 border border-accentBlue/20 px-2.5 py-1 rounded-full text-xs text-accentBlue font-semibold select-none">
+        <div className="flex items-center gap-0.5 sm:gap-1 bg-accentBlue/10 border border-accentBlue/20 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-xs text-accentBlue font-semibold select-none">
           <Zap size={12} />
-          <span>{user?.xp_points || 0} XP</span>
+          <span>{user?.xp_points || 0}<span className="hidden sm:inline"> XP</span></span>
         </div>
 
         {/* Notification Bell Dropdown */}
